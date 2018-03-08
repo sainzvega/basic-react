@@ -1,42 +1,30 @@
 import React from "react";
-import { Form, Dropdown, Grid, Button } from "semantic-ui-react";
+import { Item, Image } from "semantic-ui-react";
 
-const PokemonDetails = () => (
-  <Form size="large">
-    <Form.Field
-      name="rank"
-      label="Rank"
-      width={16}
-      control={Dropdown}
-      fluid
-      selection
-    />
-    <Form.Field
-      name="gunnery"
-      label="Gunnery"
-      width={6}
-      control={Dropdown}
-      fluid
-      selection
-    />
-    <Form.Field
-      name="piloting"
-      label="Piloting"
-      width={6}
-      control={Dropdown}
-      fluid
-      selection
-    />
-    <Form.Field name="mech" label="Mech" width={16} control={Dropdown} fluid />
-    <Grid.Row width={16}>
-      <Button primary type="button">
-        Start Editing
-      </Button>
-      <Button secondary type="button">
-        Stop Editing
-      </Button>
-    </Grid.Row>
-  </Form>
-);
+const PokemonDetails = ({ currentPokemon = {} }) => {
+  const {
+    id = null,
+    name = "",
+    sprites = {},
+    types = [],
+    nickName = "",
+    isCaught = false
+  } = currentPokemon;
+
+  return (
+    <Item.Group>
+      <Item>
+        <Item.Image size="small" src={sprites.front_default} />
+        <Item.Content>
+          <Item.Header>{`#${id} ${name}`}</Item.Header>
+          <Item.Meta>Maybe Types here?</Item.Meta>
+          <Item.Description>
+            Some Text Here Is in pokedex here?
+          </Item.Description>
+        </Item.Content>
+      </Item>
+    </Item.Group>
+  );
+};
 
 export default PokemonDetails;
