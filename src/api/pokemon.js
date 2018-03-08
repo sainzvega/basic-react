@@ -1,39 +1,10 @@
-// @flow
-export const getPokemonListData = () => {
-  const pokemonListData = [
-    {
-      id: 1,
-      name: "Bulbasaur",
-      types: ["grass"],
-      sprites: [],
-      inPokedex: true
-    },
-    {
-      id: 2,
-      name: "Bulbasaur",
-      types: ["grass"],
-      sprites: [],
-      inPokedex: true
-    },
-    {
-      id: 3,
-      name: "Bulbasaur",
-      types: ["grass"],
-      sprites: [],
-      inPokedex: true
-    },
-    {
-      id: 4,
-      name: "Bulbasaur",
-      types: ["grass"],
-      sprites: [],
-      inPokedex: true
-    }
-  ];
+import pokemonListData from "./data.json";
+import { map } from "lodash";
 
+export const getPokemonListData = () => {
   return new Promise(function(resolve) {
     setTimeout(function() {
-      resolve(pokemonListData);
+      resolve(map(pokemonListData, pokemon => pokemon));
     }, 3000);
   });
 };
