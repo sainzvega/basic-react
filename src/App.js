@@ -5,6 +5,7 @@ import PokemonDetails from "./components/PokemonDetails";
 import PokemonSearchBar from "./components/PokemonSearchBar";
 
 import { getPokemonListData } from "./api/pokemon";
+import { find } from "lodash";
 
 import "./App.css";
 
@@ -13,7 +14,7 @@ class App extends Component {
     super(props); // TODO: Explain this (use C# example or Java Example)
     this.state = {
       pokemonListData: [],
-      selectedPokemonId: null,
+      currentPokemon: null,
       searchText: ""
     };
   }
@@ -26,8 +27,21 @@ class App extends Component {
     });
   }
 
+  handleRowClicked = pokemonId => {
+    this.setState({
+      currentPokemon: pokemonId
+    });
+  };
+
   render() {
-    const { pokemonListData } = this.state;
+    const { pokemonListData = [], currentPokemon } = this.state;
+    const temp = find(
+      pokemonListData,
+      pokemon => pokemon.id === currentPokemon
+    );
+
+    console.log("Temp", temp);
+
     return (
       <div className="App">
         <div className="App-header">
@@ -40,13 +54,17 @@ class App extends Component {
             <Grid>
               <Grid.Column width={10}>
                 <Header as="h3">Pokemon List</Header>
-                <PokemonSearchBar />
-                <PokemonList pokemonList={pokemonListData} />
+                <PokemonSearchBar searchText={"Test"} />
+                <PokemonList
+                  pokemonList={pokemonListData}
+                  currentPokemon={currentPokemon}
+                  selectPokemon={this.handleRowClicked}
+                />
               </Grid.Column>
               <Grid.Column width={6}>
                 <Header as="h3">Pokemon Details</Header>
                 <Segment>
-                  <PokemonDetails />
+                  <PokemonDetails currentPokemon={temp} />
                 </Segment>
               </Grid.Column>
             </Grid>

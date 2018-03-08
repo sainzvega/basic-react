@@ -3,7 +3,8 @@ import { Table, Segment, Dimmer, Loader } from "semantic-ui-react";
 import PokemonListHeader from "./PokemonListHeader";
 import PokemonListRow from "./PokemonListRow";
 
-const PokemonList = ({ pokemonList }) => {
+const PokemonList = props => {
+  const { pokemonList, selectPokemon, currentPokemon } = props;
   if (pokemonList && pokemonList.length)
     return (
       <Segment.Group className="Pokemon-List">
@@ -11,7 +12,12 @@ const PokemonList = ({ pokemonList }) => {
           <PokemonListHeader />
           <Table.Body>
             {pokemonList.map(pokemon => (
-              <PokemonListRow key={pokemon.id} pokemon={pokemon} />
+              <PokemonListRow
+                key={pokemon.id}
+                pokemon={pokemon}
+                onPokemonClicked={selectPokemon}
+                selected={currentPokemon === pokemon.id}
+              />
             ))}
           </Table.Body>
         </Table>

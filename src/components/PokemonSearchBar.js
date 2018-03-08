@@ -1,3 +1,6 @@
+/**
+ * @augments {Component<{  searchText:string.isRequired>}
+ */
 import React from "react";
 import { Input } from "semantic-ui-react";
 import PropTypes from "prop-types";
@@ -11,8 +14,7 @@ const PokemonSearchBar = () => (
 );
 
 PokemonSearchBar.propTypes = {
-  text1: PropTypes.string.isRequired,
-  text2: PropTypes.string.isRequired
+  searchText: PropTypes.string.isRequired
 };
 
 export default PokemonSearchBar;
