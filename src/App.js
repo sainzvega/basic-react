@@ -27,6 +27,27 @@ class App extends Component {
     });
   }
 
+  filterPokemonList(pokemonListData, searchText) {
+    const searchRegExp = new RegExp(searchText, "i");
+    return pokemonListData.filter(({ name }) => name.match(searchRegExp));
+  }
+
+  handleTextChanged = evt => {
+    const { target: { value } } = evt;
+    this.setState({
+      searchText: value
+    });
+  };
+
+  handleCatchClicked = pokemonId => {
+    const tempData = this.state.pokemonListData;
+    const pokemon = find(tempData, pokemon => pokemon.id === pokemonId);
+    pokemon.inPokedex = !pokemon.inPokedex;
+    this.setState({
+      pokemonListData: tempData
+    });
+  };
+
   handleRowClicked = pokemonId => {
     this.setState({
       currentPokemon: pokemonId
@@ -34,13 +55,15 @@ class App extends Component {
   };
 
   render() {
-    const { pokemonListData = [], currentPokemon } = this.state;
+    const { pokemonListData = [], currentPokemon, searchText } = this.state;
+    const filteredPokemonList =
+      searchText && searchText.length
+        ? this.filterPokemonList(pokemonListData, searchText)
+        : pokemonListData;
     const temp = find(
       pokemonListData,
       pokemon => pokemon.id === currentPokemon
     );
-
-    console.log("Temp", temp);
 
     return (
       <div className="App">
@@ -54,9 +77,12 @@ class App extends Component {
             <Grid>
               <Grid.Column width={10}>
                 <Header as="h3">Pokemon List</Header>
-                <PokemonSearchBar searchText={"Test"} />
+                <PokemonSearchBar
+                  currentText={this.state.searchText}
+                  onTextChange={this.handleTextChanged}
+                />
                 <PokemonList
-                  pokemonList={pokemonListData}
+                  pokemonList={filteredPokemonList}
                   currentPokemon={currentPokemon}
                   selectPokemon={this.handleRowClicked}
                 />
@@ -64,7 +90,10 @@ class App extends Component {
               <Grid.Column width={6}>
                 <Header as="h3">Pokemon Details</Header>
                 <Segment>
-                  <PokemonDetails currentPokemon={temp} />
+                  <PokemonDetails
+                    currentPokemon={temp}
+                    onCatchClick={this.handleCatchClicked}
+                  />
                 </Segment>
               </Grid.Column>
             </Grid>

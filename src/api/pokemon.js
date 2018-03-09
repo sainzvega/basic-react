@@ -5,6 +5,6 @@ export const getPokemonListData = () => {
   return new Promise(function(resolve) {
     setTimeout(function() {
       resolve(map(pokemonListData, pokemon => pokemon));
-    }, 3000);
+    }, 1500);
   });
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Item } from "semantic-ui-react";
+import { Item, Button, Icon } from "semantic-ui-react";
 
 const capitalizeName = name => name.charAt(0).toUpperCase() + name.slice(1);
 const concatTypes = types =>
@@ -8,7 +8,8 @@ const concatTypes = types =>
     ""
   );
 
-const PokemonDetails = ({ currentPokemon = {} }) => {
+const PokemonDetails = ({ onCatchClick, currentPokemon = {} }) => {
+  const onClick = () => onCatchClick(id);
   const {
     id = null,
     name = "",
@@ -32,6 +33,9 @@ const PokemonDetails = ({ currentPokemon = {} }) => {
               <div>Height: {height}</div>
               <div>In Pokedex: {inPokedex ? "yes" : "no"}</div>
             </Item.Description>
+            <Button icon size="tiny" active={inPokedex} onClick={onClick}>
+              <Icon name="favorite" />
+            </Button>
           </Item.Content>
         </Item>
       )}
