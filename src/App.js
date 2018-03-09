@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Header, Grid, Segment } from "semantic-ui-react";
+import { Container, Header, Grid, Segment, Image } from "semantic-ui-react";
 import PokemonList from "./components/PokemonList";
 import PokemonDetails from "./components/PokemonDetails";
 import PokemonSearchBar from "./components/PokemonSearchBar";
@@ -8,6 +8,7 @@ import { getPokemonListData } from "./api/pokemon";
 import { find } from "lodash";
 
 import "./App.css";
+import logo from "./assests/pokedex.png";
 
 class App extends Component {
   constructor(props) {
@@ -69,10 +70,10 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <Header inverted as="h1">
-            Pokemon List
+            <Image src={logo} size="mini" /> ISI-Pokedex
           </Header>
         </div>
-        <Container>
+        <Container style={{ marginTop: "1em" }}>
           <Segment>
             <Grid>
               <Grid.Column width={10}>

@@ -1,5 +1,7 @@
 import React from "react";
-import { Item, Button, Icon } from "semantic-ui-react";
+import { Item, Button, Image } from "semantic-ui-react";
+import pokeball from "../assests/pokeball.png";
+import pokeballGray from "../assests/pokeball-gray.png";
 
 const capitalizeName = name => name.charAt(0).toUpperCase() + name.slice(1);
 const concatTypes = types =>
@@ -31,10 +33,9 @@ const PokemonDetails = ({ onCatchClick, currentPokemon = {} }) => {
             <Item.Description>
               <div>Weight: {weight}</div>
               <div>Height: {height}</div>
-              <div>In Pokedex: {inPokedex ? "yes" : "no"}</div>
             </Item.Description>
-            <Button icon size="tiny" active={inPokedex} onClick={onClick}>
-              <Icon name="favorite" />
+            <Button onClick={onClick} size="mini">
+              <Image src={inPokedex ? pokeball : pokeballGray} size="mini" />
             </Button>
           </Item.Content>
         </Item>
