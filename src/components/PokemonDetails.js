@@ -1,7 +1,7 @@
 import React from "react";
 import { Item, Button, Image } from "semantic-ui-react";
-import pokeball from "../assests/pokeball.png";
-import pokeballGray from "../assests/pokeball-gray.png";
+import pokeball from "assets/images/pokeball.png";
+import pokeballGray from "assets/images/pokeball-gray.png";
 
 const capitalizeName = name => name.charAt(0).toUpperCase() + name.slice(1);
 const concatTypes = types =>

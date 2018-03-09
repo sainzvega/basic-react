@@ -4,11 +4,11 @@ import PokemonList from "./components/PokemonList";
 import PokemonDetails from "./components/PokemonDetails";
 import PokemonSearchBar from "./components/PokemonSearchBar";
 
-import { getPokemonListData } from "./api/pokemon";
+import { getPokemonList } from "./api/pokemon";
 import { find } from "lodash";
 
 import "./App.css";
-import logo from "./assests/pokedex.png";
+import logo from "assets/images/pokedex.png";
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    getPokemonListData().then(data => {
+    getPokemonList().then(data => {
       this.setState({
         pokemonListData: data
       });
