@@ -3,13 +3,6 @@ import { Item, Button, Image } from "semantic-ui-react";
 import pokeball from "assets/images/pokeball.png";
 import pokeballGray from "assets/images/pokeball-gray.png";
 
-const capitalizeName = name => name.charAt(0).toUpperCase() + name.slice(1);
-const concatTypes = types =>
-  types.reduce(
-    (prev, { type }) => (prev.length ? prev + "/" + type.name : type.name),
-    ""
-  );
-
 const PokemonDetails = ({ onCatchClick, currentPokemon = {} }) => {
   const onClick = () => onCatchClick(id);
   const {
@@ -28,8 +21,8 @@ const PokemonDetails = ({ onCatchClick, currentPokemon = {} }) => {
         <Item>
           <Item.Image size="small" src={sprites.front_default} />
           <Item.Content>
-            <Item.Header>{`#${id} ${capitalizeName(name)}`}</Item.Header>
-            <Item.Meta>{concatTypes(types)}</Item.Meta>
+            <Item.Header>{`#${id} ${name}`}</Item.Header>
+            <Item.Meta>{types}</Item.Meta>
             <Item.Description>
               <div>Weight: {weight}</div>
               <div>Height: {height}</div>
