@@ -7,7 +7,6 @@ import PokemonSearchBar from "components/PokemonSearchBar";
 import { getPokemonList } from "api/pokemon";
 import { find } from "lodash";
 
-import "./App.css";
 import logo from "assets/images/pokedex.png";
 
 class App extends Component {
@@ -67,12 +66,20 @@ class App extends Component {
     );
 
     return (
-      <div className="App">
-        <div className="App-header">
-          <Header inverted as="h1">
-            <Image src={logo} size="mini" /> ISI-Pokedex
-          </Header>
-        </div>
+      <div>
+        <Header
+          inverted
+          as="h1"
+          color="grey"
+          style={{
+            width: "100%",
+            height: "70px",
+            padding: "20px",
+            backgroundColor: "black"
+          }}
+        >
+          <Image src={logo} size="mini" /> ISI-Pokedex
+        </Header>
         <Container style={{ marginTop: "1em" }}>
           <Segment>
             <Grid>
@@ -90,12 +97,10 @@ class App extends Component {
               </Grid.Column>
               <Grid.Column width={6}>
                 <Header as="h3">Pokemon Details</Header>
-                <Segment>
-                  <PokemonDetails
-                    currentPokemon={temp}
-                    onCatchClick={this.handleCatchClicked}
-                  />
-                </Segment>
+                <PokemonDetails
+                  currentPokemon={temp}
+                  onCatchClick={this.handleCatchClicked}
+                />
               </Grid.Column>
             </Grid>
           </Segment>

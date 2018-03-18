@@ -7,7 +7,12 @@ const PokemonList = props => {
   const { pokemonList, selectPokemon, currentPokemon } = props;
   if (pokemonList && pokemonList.length)
     return (
-      <Segment.Group className="Pokemon-List">
+      <Segment.Group
+        style={{
+          maxHeight: "700px",
+          overflowY: "auto"
+        }}
+      >
         <Table celled>
           <PokemonListHeader />
           <Table.Body>
