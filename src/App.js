@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Container, Header, Grid, Segment, Image } from "semantic-ui-react";
-import PokemonList from "components/PokemonList";
-import PokemonDetails from "components/PokemonDetails";
-import PokemonSearchBar from "components/PokemonSearchBar";
+import PokemonList from "./components/PokemonList";
+import PokemonDetails from "./components/PokemonDetails";
+import PokemonSearchBar from "./components/PokemonSearchBar";
 
-import { getPokemonList } from "api/pokemon";
+import { getPokemonList } from "./api/pokemon";
 import { find } from "lodash";
 
-import logo from "assets/images/pokedex.png";
+import logo from "./assets/images/pokedex.png";
 
 class App extends Component {
   constructor(props) {

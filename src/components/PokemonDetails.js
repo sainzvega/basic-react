@@ -1,7 +1,7 @@
 import React from "react";
 import { Item, Button, Image, Segment } from "semantic-ui-react";
-import pokeball from "assets/images/pokeball.png";
-import pokeballGray from "assets/images/pokeball-gray.png";
+import pokeball from "../assets/images/pokeball.png";
+import pokeballGray from "../assets/images/pokeball-gray.png";
 
 const PokemonDetails = ({ onCatchClick, currentPokemon = {} }) => {
   const onClick = () => onCatchClick(id);
